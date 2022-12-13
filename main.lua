@@ -7,18 +7,24 @@ local disp = screen:WaitForChild("Display")
 local glay = disp:WaitForChild("UIGridLayout")
 local cont = screen:WaitForChild("Container")
 
+local PORT = 8124
+
 while true do
-	local resp = http:GetAsync("http://localhost:8124")
+	--// Get image data from server
+	local resp = http:GetAsync("http://localhost:"..PORT)
 	local imgd = http:JSONDecode(resp)
 	w,h = unpack(imgd.size)
 	glay.CellSize = UDim2.new(1/w,0,1/h,0)
 	data = imgd.data
 	
+	--// Creates all the necessary "pixels"
 	while #disp:GetChildren()-1 < #data do
 		local new = cont:Clone()
-		new.Name = #disp:GetChildren()-1
+		new.Name = #disp:GetChildren()
 		new.Parent = disp
 	end
+	
+	--// Draws image to screen
 	for i,rgb in pairs(data) do
 		local pix = disp:FindFirstChild(i)
 		if pix then
