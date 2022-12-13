@@ -9,3 +9,4 @@ Resource for rendering computer screen in roblox studio (locally)
 
 Notes:
 - Only works locally on host computer, though you could probably extend its functionality through port forwarding
+- Python code must be running (aka web server must be active) for it to work
