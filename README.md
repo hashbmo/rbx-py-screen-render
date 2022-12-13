@@ -1,11 +1,11 @@
 # Roblox-Py-Screen-Render
 Resource for rendering screen in roblox studio (locally)
 
-- Place lua code into a server script
-- Load rbxm file into studio and place in workspace (or if you know what you're doing, change code to fit your needs)
-- Run python code
+- Copy paste contents server.lua into server script
+- Load rbxm file into studio and place in workspace
+- Copy paste python code into development environment of your choice and run it
 - Play test game in roblox studio
-- Low res image of your display should show up on the "Screen" in studio
+- Low res image of your display should show up on the "Screen" in the workspace
 
 Notes:
 - Only works locally on host computer, though you could probably extend its functionality through port forwarding
