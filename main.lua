@@ -1,6 +1,4 @@
 local http = game:GetService("HttpService")
-local resp = http:GetAsync("http://localhost:9999")
-local data = http:JSONDecode(resp)
 
 local screen = workspace:WaitForChild("Screen")
 local disp = screen:WaitForChild("Display")
@@ -16,20 +14,18 @@ while true do
 	w,h = unpack(imgd.size)
 	glay.CellSize = UDim2.new(1/w,0,1/h,0)
 	data = imgd.data
-	
+
 	--// Creates all the necessary "pixels"
 	while #disp:GetChildren()-1 < #data do
 		local new = cont:Clone()
 		new.Name = #disp:GetChildren()
 		new.Parent = disp
 	end
-	
+
 	--// Draws image to screen
 	for i,rgb in pairs(data) do
-		local pix = disp:FindFirstChild(i)
-		if pix then
-			pix.BackgroundColor3 = Color3.fromRGB(unpack(rgb))
-		end
+		local pix = disp[i]
+		pix.BackgroundColor3 = Color3.fromRGB(unpack(rgb))
 	end
 	task.wait()
 end
